@@ -20,6 +20,9 @@ public abstract class Ticket implements ITicket
 		return euroKm;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Ticket [entradaKm=" + entradaKm + ", euroKm=" + euroKm + "]";
+	}
 	
 }

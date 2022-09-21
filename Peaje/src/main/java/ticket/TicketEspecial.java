@@ -4,7 +4,8 @@ public class TicketEspecial extends Ticket
 {
 	private int numPasag;
 	
-	public TicketEspecial(int numPasag,double entradaKm, double euroKm) {
+	public TicketEspecial(double entradaKm, double euroKm, int numPasag) 
+	{
 		super(entradaKm, euroKm);
 		this.numPasag=numPasag;
 	}
@@ -13,16 +14,21 @@ public class TicketEspecial extends Ticket
 	public double calcularTarifa(double salidaKm) 
 	{
 		double recorridosKm = Math.abs(salidaKm - getEntradaKm());
-		double tarifa = (double) (recorridosKm * getEuroKm())*this.numPasag;
+		if(recorridosKm > 100)
+		{
+			
+			double tarifa = (double) ( recorridosKm * ( getEuroKm() + 0.05) )  * this.numPasag;
+		}
+			
+		double tarifa = (double) ( recorridosKm  * getEuroKm() ) * this.numPasag;
 			
 		return tarifa;
 	}
 
 
-	
-
-
-	
-		
+	@Override
+	public String toString() {
+		return "TicketEspecial [numPasag=" + numPasag + "]";
+	}
 	
 }
